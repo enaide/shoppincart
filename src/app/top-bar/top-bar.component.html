@@ -1,0 +1,24 @@
+<div class="float-end">
+  <small class="fs-6">
+    Your cart:
+    <span *ngIf="itemCount > 0">
+      {{ itemCount }} item(s)
+      <!-- {{ cart.cartPrice | currency : "USD" : "symbol" : "2.2-2" }} -->
+    </span>
+    <span *ngIf="itemCount == 0"> (empty) </span>
+  </small>
+  <div class="form-inline float-start m-1">
+    <select [value]="currentRate" (change)="changeRate($any($event).target.value)">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="CUP">CUP</option>
+    </select>
+  </div>
+  <button
+    class="btn btn-sm bg-dark text-white"
+    [disabled]="itemCount == 0"
+    routerLink="/cart"
+  >
+    <i class="fa fa-shopping-cart"></i>
+  </button>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card m-1 p-1 bg-light" *ngIf="product | async as p">
+      <div class="d-flex justify-content-between bd-highlight">
+        <div class="d-flex justify-content-between bd-highlight">
+
+          <div class="d-flex flex-column p-2 bd-dark">
+            <span class="card-text bg-white p-1">Name: <span>{{p.name}}</span></span>
+            <span class="badge rounded-pill bg-primary" >Price: <span>{{p.price | currency}}</span></span>
+          </div>
+        </div>
+        <div class="d-flex flex-column p-2 bd-highlight" style="width: 500px;border: 4px solid;">
+          <span class="card-text bg-white p-1"> {{p.description}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-end p-2" *ngIf="product | async as p">
+      <button type="button" class="btn btn-success" (click)="addToCart(p)">Buy</button>
+      <button type="button" class="btn btn-secondary" [routerLink]="'/'">Back to list</button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="bg-dark text-white p-2">
+      <span class="navbar-brand ml-2">MOVIL STORE</span>
+      <app-top-bar (OnTaxChange)="updateRatePrices($event)"></app-top-bar>
+    </div>
+  </div>
+  <div class="row text-white">
+    <ng-container *ngIf="categories$ | async as categories">
+      <div class="col-2 p-2">
+        <div class="d-grid gap-2">
+          <span class="badge rounded-pill bg-primary">Categories</span>
+          <button class="btn btn-outline-primary" (click)="changeCategory()">
+            All products
+          </button>
+          <button *ngFor="let cat of categories" class="btn btn-outline-primary" (click)="changeCategory(cat)"
+            [class.active]="cat == selectedCategory">
+            {{ cat }}
+          </button>
+        </div>
+      </div>
+      <div class="col-1 p-2">
+      </div>
+
+    </ng-container>
+    <ng-container *ngIf="products$ | async as products">
+      <div class="col-9 p-2 text-dark">
+        <div *ngFor="let product of products" class="card m-1 p-1 bg-light">
+          <h4>
+            <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+            {{ product.name }}
+            </a>
+            <span class="badge rounded-pill bg-primary" style="float: right">
+              {{ product.price | currency : currency }}
+            </span>
+          </h4>
+          <div class="card-text bg-white p-1">
+            {{ product.description }}
+            <button class="btn btn-success btn-sm float-end" (click)="addToCart(product)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

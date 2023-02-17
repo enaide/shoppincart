@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Phone Xiaomi MI XL",
+      "category": "XL",
+      "price": 799,
+      "description": "Xiaomi MI XL a large phone whith one of the best screens"
+    },
+    {
+      "id": 2,
+      "name": "Phone Xiaomi POCO XL",
+      "category": "XL",
+      "price": 499,
+      "description": "POCO XL a large phone whith one of the best screens"
+    },
+    {
+      "id": 3,
+      "name": "IPHONE R Apple Store",
+      "category": "Mini",
+      "price": 779,
+      "description": "A great phone whit one the best cameras"
+    },
+    {
+      "id": 4,
+      "name": "IPHONE X Apple Store",
+      "category": "Mini",
+      "price": 689,
+      "description": "A great phone whit one the best cameras"
+    },
+    {
+      "id": 5,
+      "name": "Samsung Galaxy Premium",
+      "category": "Standar",
+      "price": 499,
+      "description": "Small Standar phone whit best battery"
+    },
+    {
+      "id": 6,
+      "name": "Samsung Galaxy",
+      "category": "Standar",
+      "price": 299,
+      "description": "Small Standar phone standar whit best battery"
+    }
+  ]
+}

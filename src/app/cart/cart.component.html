@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="bg-dark text-white p-2">
+      <span class="navbar-brand ml-2">MOVIL STORE</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mt-2">
+      <h2 class="text-center">Your Cart</h2>
+      <table class="table table-bordered table-striped p-2">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Product</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="items.length == 0">
+            <td colspan="4" class="text-center">Your cart is empty</td>
+          </tr>
+          <tr *ngFor="let line of items">
+            <td>
+              <input type="number" [value]="line.amount" class="form-control-sm" style="width: 5em" disabled/>
+            </td>
+            <td>{{ line.name }}</td>
+            <td class="text-end">
+              {{ line.price | currency : "USD" : "symbol" : "2.2-2" }}
+            </td>
+            <td class="text-end">
+              {{ line.price*line.amount | currency : "USD" : "symbol" : "2.2-2" }}
+            </td>
+            <td class="text-center">
+              <div class="d-flex align-items-center justify-content-end" style="margin: 5px;">
+                <button class="btn btn-sm btn-danger" (click)="removeFromCart(line)">-</button>
+                <button class="btn btn-sm btn-warning" (click)="addToCart(line)">+</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <div class="col">
+          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
+            <div style="display: flex; justify-content: end;">
+              <div class="form-group">
+                <label for="name"> Name </label>
+                <input  class="form-control" id="name" type="text" formControlName="name" />
+              </div>
+              <div class="form-group">
+                <label for="address"> Address </label>
+                <input class="form-control" id="address" type="text" formControlName="address" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="button" class="btn btn-success mt-2"  type="submit" [disabled]="items.length<=0">Purchase</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="text-center">
+        <button class="btn btn-primary m-1" [routerLink]="'/'">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
